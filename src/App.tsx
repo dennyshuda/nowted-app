@@ -1,20 +1,23 @@
-import { Outlet, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Sidebar } from "./components/Sidebar";
-import { ActiveNotes } from "./pages/ActiveNotes";
+import { Home } from "./pages/Home";
 import { ArchivedNotes } from "./pages/ArchivedNotes";
+import { AddNotes } from "./pages/AddNotes";
+import Layout from "./components/Layout";
 
 function App() {
   return (
     <div className="App">
-      <div className="flex h-screen">
-        <Sidebar />
-        <main className="bg-gray-700 w-full p-5 text-white">
+      <BrowserRouter>
+        <Layout>
+          <Sidebar />
           <Routes>
-            <Route path="/" element={<ActiveNotes />} />
+            <Route path="/" element={<Home />} />
             <Route path="/archived-notes" element={<ArchivedNotes />} />
+            <Route path="/add-notes" element={<AddNotes />} />
           </Routes>
-        </main>
-      </div>
+        </Layout>
+      </BrowserRouter>
     </div>
   );
 }
