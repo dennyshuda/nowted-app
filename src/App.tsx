@@ -4,20 +4,23 @@ import { Home } from "./pages/Home";
 import { ArchivedNotes } from "./pages/ArchivedNotes";
 import { AddNotes } from "./pages/AddNotes";
 import Layout from "./components/Layout";
+import { NoteContextProvider } from "./context/NoteContext";
 
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
-        <Layout>
-          <Sidebar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/archived-notes" element={<ArchivedNotes />} />
-            <Route path="/add-notes" element={<AddNotes />} />
-          </Routes>
-        </Layout>
-      </BrowserRouter>
+      <NoteContextProvider>
+        <BrowserRouter>
+          <Layout>
+            <Sidebar />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/archived-notes" element={<ArchivedNotes />} />
+              <Route path="/add-notes" element={<AddNotes />} />
+            </Routes>
+          </Layout>
+        </BrowserRouter>
+      </NoteContextProvider>
     </div>
   );
 }
