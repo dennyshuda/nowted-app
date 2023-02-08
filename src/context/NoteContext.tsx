@@ -16,6 +16,7 @@ export const NoteContext = createContext<NoteContextType>({
   notes: [],
   addNote: () => {},
   deleteNote: () => {},
+  archivedNote: () => {},
 });
 
 export function NoteContextProvider({ children }: ChildrenType) {
@@ -35,8 +36,21 @@ export function NoteContextProvider({ children }: ChildrenType) {
     setNotes(notes.filter((note) => note.id !== id));
   };
 
+  const archivedNote = (id: string) => {
+    notes.filter((note) => {
+      if (note.id === id) {
+        if (note.status == true) {
+          note.status = false;
+        } else {
+          note.status = true;
+        }
+        setNotes([...notes]);
+      }
+    });
+  };
+
   return (
-    <NoteContext.Provider value={{ notes, addNote, deleteNote }}>
+    <NoteContext.Provider value={{ notes, addNote, deleteNote, archivedNote }}>
       {children}
     </NoteContext.Provider>
   );
