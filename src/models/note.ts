@@ -9,4 +9,5 @@ export interface NoteContextType {
   notes: NoteType[];
   addNote: (title: string, description: string) => void;
   deleteNote: (id: string) => void;
+  archivedNote: (id: string) => void;
 }
