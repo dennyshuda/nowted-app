@@ -1,10 +1,14 @@
 export const NoteData = [
   {
-    id: 1,
+    id: "jaksjda8u",
     title: "Note 1",
+    description: "lorem10",
+    status: false,
   },
   {
-    id: 2,
+    id: "ahsduoh98",
     title: "Note 2",
+    description: "lorem20",
+    status: false,
   },
 ];
